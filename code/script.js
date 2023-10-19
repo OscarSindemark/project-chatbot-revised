@@ -1,6 +1,6 @@
 // Variables that point to selected DOM elements
 const chat = document.getElementById('chat')
-
+const inputWrapper = document.getElementById('input-wrapper')
 // If you need any global variables that you can use across different functions, declare them here:
 
 
@@ -54,4 +54,17 @@ setTimeout(greetUser, 1000)
 //Set up answer for user here
 const handleNameInput = (event) => {
     event.preventDefault()
+    //Store value in a variable so we can access it later after clearing from input
+    const name = nameInput.value;
+    showMessage(name, 'user');
+    nameInput.value = ''
+  setTimeOut(() => typeTherapy(name), 1000)
 }
+
+
+const typeTherapy = (name) => {
+  showMessage(`What type of professional are you looking for today, ${name}?`, 'bot')
+}
+
+
+inputWrapper.addEventListener('submit', handleNameInput)
